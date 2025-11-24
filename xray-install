@@ -63,7 +63,7 @@ cat << EOF > /usr/local/etc/xray/config.json
                 "network": "xhttp",
                 "xhttpSettings": {
                     "mode": "packet-up",
-                    "path": "/e3e3t9",
+                    "path": "/",
                     "host": "www.myhelsinki.fi"
             },
                 "security": "reality",
