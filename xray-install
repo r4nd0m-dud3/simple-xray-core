@@ -47,7 +47,7 @@ cat << EOF > /usr/local/etc/xray/config.json
     "inbounds": [
         {
             "listen": "0.0.0.0",
-            "port": 43656,
+            "port": 4365,
             "protocol": "vless",
             "settings": {
                 "clients": [
@@ -65,7 +65,7 @@ cat << EOF > /usr/local/etc/xray/config.json
                     "mode": "packet-up",
                     "path": "/e3e3t9",
                     "host": "www.myhelsinki.fi"
-            }
+            },
                 "security": "reality",
                 "realitySettings": {
                     "show": false,
@@ -143,7 +143,7 @@ pbk=$(cat /usr/local/etc/xray/.keys | awk -F': ' '/Password/ {print $2}')
 sid=$(cat /usr/local/etc/xray/.keys | awk -F': ' '/shortsid/ {print $2}')
 sni=$(jq -r '.inbounds[0].streamSettings.realitySettings.serverNames[0]' /usr/local/etc/xray/config.json)
 ip=$(timeout 3 curl -4 -s icanhazip.com)
-link="$protocol://$uuid@$ip:$port?security=reality&sni=$sni&fp=qq&pbk=$pbk&sid=$sid&spx=/&type=tcp&flow=xtls-rprx-vision&encryption=none#vless-$ip"
+link="$protocol://$uuid@$ip:$port?security=reality&sni=$sni&fp=qq&pbk=$pbk&sid=$sid&spx=/&type=xhttp&flow=xtls-rprx-vision&encryption=none#vless-$ip"
 echo ""
 echo "Ссылка для подключения":
 echo "$link"
@@ -178,7 +178,7 @@ sid=$(cat /usr/local/etc/xray/.keys | awk -F': ' '/shortsid/ {print $2}')
 username=$(jq --argjson index "$index" -r '.inbounds[0].settings.clients[$index].email' /usr/local/etc/xray/config.json)
 sni=$(jq -r '.inbounds[0].streamSettings.realitySettings.serverNames[0]' /usr/local/etc/xray/config.json)
 ip=$(curl -4 -s icanhazip.com)
-link="$protocol://$uuid@$ip:$port?security=reality&sni=$sni&fp=qq&pbk=$pbk&sid=$sid&spx=/&type=tcp&flow=xtls-rprx-vision&encryption=none#$username"
+link="$protocol://$uuid@$ip:$port?security=reality&sni=$sni&fp=qq&pbk=$pbk&sid=$sid&spx=/&type=xhttp&flow=xtls-rprx-vision&encryption=none#$username"
 echo ""
 echo "Ссылка для подключения":
 echo "$link"
@@ -255,7 +255,7 @@ sid=$(cat /usr/local/etc/xray/.keys | awk -F': ' '/shortsid/ {print $2}')
 username=$(jq --argjson index "$index" -r '.inbounds[0].settings.clients[$index].email' /usr/local/etc/xray/config.json)
 sni=$(jq -r '.inbounds[0].streamSettings.realitySettings.serverNames[0]' /usr/local/etc/xray/config.json)
 ip=$(curl -4 -s icanhazip.com)
-link="$protocol://$uuid@$ip:$port?security=reality&sni=$sni&fp=qq&pbk=$pbk&sid=$sid&spx=/&type=tcp&flow=xtls-rprx-vision&encryption=none#$username"
+link="$protocol://$uuid@$ip:$port?security=reality&sni=$sni&fp=qq&pbk=$pbk&sid=$sid&spx=/&type=xhttp&flow=xtls-rprx-vision&encryption=none#$username"
 echo ""
 echo "Ссылка для подключения":
 echo "$link"
