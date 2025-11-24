@@ -61,14 +61,19 @@ cat << EOF > /usr/local/etc/xray/config.json
             },
             "streamSettings": {
                 "network": "tcp",
+                "xhttpSettings": {
+                    "mode": "packet-up",
+                    "path": "/e3e3t9",
+                    "host": "www.myhelsinki.fi"
+            }
                 "security": "reality",
                 "realitySettings": {
                     "show": false,
-                    "dest": "ya.ru:443",
+                    "dest": "myhelsinki.fi:443",
                     "xver": 0,
                     "serverNames": [
-                        "ya.ru",
-                        "www.ya.ru"
+                        "myhelsinki.fi",
+                        "www.myhelsinki.fi"
                     ],
                     "privateKey": "$privatkey",
                     "minClientVer": "",
